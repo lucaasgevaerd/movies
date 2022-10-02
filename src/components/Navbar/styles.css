@@ -1,0 +1,81 @@
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 10px;
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 5px var(--shadow);
+}
+
+.navbar-brand {
+  padding: 0 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.navbar-brand a {
+  text-decoration: none;
+  color: var(--font-primary-color);
+}
+
+.navbar-brand:hover {
+  text-shadow: 0 0 5px var(--glow);
+  font-size: 28px;
+}
+
+.navbar-search {
+  display: flex;
+  color: var(--font-secondary-color);
+  height: 30px;
+  width: 50%;
+  border-radius: 6px;
+  border: none;
+  max-width: 260px;
+  background-color: var(--secondary-color);
+  color: var(--font-primary-color);
+  padding: 0 10px;
+  transition: 0.3s;
+}
+
+.navbar-search:hover {
+  scale: 105%;
+  color: var(--font-primary-color);
+  box-shadow: 0 0 6px var(--glow);
+}
+
+.navbar-search::placeholder {
+  color: var(--placeholder);
+}
+
+.navbar-search:focus {
+  scale: 105%;
+  outline: none;
+  box-shadow: 0 0 6px var(--glow);
+}
+
+.navbar-menu {
+  display: flex;
+  width: 100px;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 10px;
+}
+
+.navbar-menu-heart {
+  margin-right: 10px;
+}
+
+.navbar-menu-heart,
+.navbar-menu-shopping-cart {
+  font-size: 25px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.navbar-menu-heart:hover,
+.navbar-menu-shopping-cart:hover {
+  filter: drop-shadow(0 0 4px var(--glow));
+  font-size: 30px;
+}

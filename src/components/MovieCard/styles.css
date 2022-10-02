@@ -1,0 +1,85 @@
+.movie-card-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  background-color: #444;
+  position: relative;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  overflow: hidden;
+  margin: 10px;
+}
+
+.movie-card-favorite-button {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 27px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.movie-card-add-shopping-cart-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 27px;
+  color: #888;
+  cursor: pointer;
+}
+
+.movie-card-genres-and-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #fff;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.movie-card-genres-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.movie-card-genres {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: var(--font-secondary-color);
+  border-radius: 6px;
+  padding: 0 10px;
+  height: 25px;
+  margin: 2px 0;
+}
+
+.overview {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  top: 100%;
+  transition: 0.4s;
+  z-index: 1;
+}
+
+.overview.active {
+  top: 0;
+  transition: 0.4s;
+}
+
+.movie-card-overview {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.movie-card-description {
+  height: 150px;
+  overflow: auto;
+}

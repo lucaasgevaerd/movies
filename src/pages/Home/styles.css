@@ -1,0 +1,72 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pagination-item {
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--font-primary-color);
+  font-weight: bold;
+  color: var(--font-primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.pagination-item:hover {
+  cursor: pointer;
+  scale: 120%;
+}
+
+.pagination-item.active {
+  background-color: var(--primary-color);
+}
+
+.pagination-link-active {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.arrow-previous {
+  color: var(--font-primary-color);
+}
+
+.arrow-next {
+  margin-left: 10px;
+  color: var(--font-primary-color);
+}
+
+.arrow-inactive {
+  color: var(--inactive);
+}
+
+.arrow-active {
+  color: var(--primary-color);
+}
+
+.pagination-arrow-container {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.arrow-previous:hover,
+.arrow-next:hover {
+  cursor: pointer;
+}
+
+.arrow-inactive:hover {
+  cursor: default;
+}
+
+.movies-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 10px;
+}
