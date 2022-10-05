@@ -25,7 +25,7 @@ function ShoppingCartItem({ image, title, price, id }: Props) {
       <div className='shopping-cart-item-container'>
         <img className='shopping-cart-item-image' src={image} alt={title} />
         <p className='shopping-cart-item-title'>{title}</p>
-        <p className='shopping-cart-item-price'>${price}</p>
+        <p className='shopping-cart-item-price'>${price.toFixed(2)}</p>
         <FaTrash className='shopping-cart-item-trash' onClick={handleMovieRemove} />
       </div>
     </>

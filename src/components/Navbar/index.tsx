@@ -27,10 +27,7 @@ function Navbar() {
   const getSearchMovies = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${text}`);
     const data = await response.json()
-    console.log(data)
   }
-
-  console.log(text)
 
   return (
     <>
@@ -39,14 +36,14 @@ function Navbar() {
           <h1 className="navbar-brand"><Link to={'/'}>Movies</Link></h1>
           <input id='text' name='text' className='navbar-search' type="text" placeholder='Pesquisar' onChange={handleChange} value={text} />
           <div className="navbar-menu">
-            <Link to={'/wishlist'}>
-              <div className='navbar-menu-wishlist'>
-                {wishlistState.length > 0 && (
-                  <div className='item-quantity-indicator'>{wishlistState.length}</div>
-                )}
+            <div className='navbar-menu-wishlist'>
+              {wishlistState.length > 0 && (
+                <div className='item-quantity-indicator'>{wishlistState.length}</div>
+              )}
+              <Link to={'/wishlist'} >
                 <FaHeart />
-              </div>
-            </Link>
+              </Link>
+            </div>
             <div className='navbar-menu-shopping-cart' >
               {shoppingCartState.length > 0 && (
                 <div className='item-quantity-indicator'>{shoppingCartState.length}</div>

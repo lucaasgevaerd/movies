@@ -22,13 +22,8 @@
   color: var(--font-primary-color);
 }
 
-.navbar-brand:hover {
-  text-shadow: 0 0 5px var(--glow);
-  font-size: 28px;
-}
-
 .navbar-search {
-  display: flex;
+  display: none;
   color: var(--font-secondary-color);
   height: 30px;
   width: 50%;
@@ -41,20 +36,8 @@
   transition: 0.3s;
 }
 
-.navbar-search:hover {
-  scale: 105%;
-  color: var(--font-primary-color);
-  box-shadow: 0 0 6px var(--glow);
-}
-
 .navbar-search::placeholder {
   color: var(--placeholder);
-}
-
-.navbar-search:focus {
-  scale: 105%;
-  outline: none;
-  box-shadow: 0 0 6px var(--glow);
 }
 
 .navbar-menu {
@@ -71,6 +54,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+.navbar-menu-wishlist a {
+  display: flex;
 }
 
 .navbar-menu-shopping-cart {
