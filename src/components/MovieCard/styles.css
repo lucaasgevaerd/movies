@@ -7,25 +7,53 @@
   position: relative;
   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
   overflow: hidden;
-  margin: 10px;
+  margin: 0 0 20px;
 }
 
-.movie-card-favorite-button {
+.movie-card-wishlist-button {
   position: absolute;
   top: 15px;
   left: 15px;
-  font-size: 27px;
-  color: #aaa;
+  font-size: 30px;
   cursor: pointer;
 }
 
-.movie-card-add-shopping-cart-button {
+.movie-card-wishlist-button-description {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: var(--indicators);
+  color: rgb(0, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+  font-size: 14px;
+  padding: 10px;
+  width: 140px;
+  border-radius: 6px;
+}
+
+.movie-card-shopping-cart-button {
   position: absolute;
   top: 15px;
   right: 15px;
-  font-size: 27px;
-  color: #888;
+  font-size: 30px;
   cursor: pointer;
+}
+
+.movie-card-shopping-cart-description {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  background-color: var(--indicators);
+  color: rgb(0, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+  font-size: 14px;
+  padding: 10px;
+  width: 140px;
+  border-radius: 6px;
 }
 
 .movie-card-genres-and-title {
@@ -72,6 +100,18 @@
   transition: 0.4s;
 }
 
+.movie-card-window-close-button {
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.movie-card-window-close-button:hover {
+  cursor: pointer;
+}
+
 .movie-card-overview {
   font-size: 18px;
   font-weight: bold;
@@ -82,4 +122,37 @@
 .movie-card-description {
   height: 150px;
   overflow: auto;
+}
+
+.movie-card-value:first-of-type {
+  position: absolute;
+  bottom: 7px;
+  left: 15px;
+  font-size: 20px;
+  color: #aaa;
+}
+
+.movie-card-value-price {
+  font-size: 26px;
+  color: #ff0;
+  font-weight: bold;
+}
+
+.tap-to-learn-more {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  color: #aaa;
+}
+
+@media (min-width: 768px) {
+  .movie-card-wishlist-button:hover .movie-card-wishlist-button-description {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .movie-card-shopping-cart-button:hover .movie-card-shopping-cart-description {
+    visibility: visible;
+    opacity: 1;
+  }
 }

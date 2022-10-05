@@ -13,7 +13,8 @@ function Home() {
   const getMovies = async (value: any) => {
     const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&page=${value}`);
     const data = await response.json()
-    setMovies(data.results);
+    const addPricePropertyInMovies = await data.results.map((el: any) => ({ ...el, price: 4.90 }))
+    setMovies(addPricePropertyInMovies);
   }
 
   useEffect(() => {
@@ -24,30 +25,31 @@ function Home() {
     getMovies(value + 1)
   }
 
+
   return (
     <>
       <main className='main-container'>
         <section className='movies-container'>
           {movies.map(movie => (
-            <MovieCard image={movie.poster_path} title={movie.title} description={movie.overview} release={movie.release_date} genres={movie.genre_ids} id={movie.id} key={movie.id} />
+            <MovieCard image={movie.poster_path} title={movie.title} description={movie.overview} release={movie.release_date} genres={movie.genre_ids} price={movie.price} id={movie.id} key={movie.id} />
           ))}
-          <ReactPaginate
-            forcePage={0}
-            pageCount={500}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            containerClassName="pagination-container"
-            pageLinkClassName="pagination-item"
-            breakClassName="pagination-item"
-            previousClassName="arrow-previous"
-            nextClassName="arrow-next"
-            activeLinkClassName="pagination-link-active"
-            disabledClassName="arrow-inactive"
-            previousLabel={<div className="pagination-arrow-container"><FaArrowLeft /></div>}
-            nextLabel={<div className="pagination-arrow-container"><FaArrowRight /></div>}
-            onPageChange={(items) => (onChange) ? onChange(items.selected) : {}}
-          />
         </section>
+        <ReactPaginate
+          forcePage={0}
+          pageCount={500}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={1}
+          containerClassName="pagination-container"
+          pageLinkClassName="pagination-item"
+          breakClassName="pagination-item"
+          previousClassName="arrow-previous"
+          nextClassName="arrow-next"
+          activeLinkClassName="pagination-link-active"
+          disabledClassName="arrow-inactive"
+          previousLabel={<div className="pagination-arrow-container"><FaArrowLeft /></div>}
+          nextLabel={<div className="pagination-arrow-container"><FaArrowRight /></div>}
+          onPageChange={(items) => (onChange) ? onChange(items.selected) : {}}
+        />
       </main>
     </>
   )

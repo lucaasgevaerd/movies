@@ -10,6 +10,11 @@ html {
   color: var(--font-primary-color);
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 :root {
   --primary-color: #c3083d;
   --secondary-color: #6e2433;
@@ -19,6 +24,7 @@ html {
   --glow: #fff;
   --shadow: #000;
   --inactive: #666;
+  --indicators: #fbe192;
 }
 
 li {

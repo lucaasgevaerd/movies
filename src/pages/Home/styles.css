@@ -1,8 +1,11 @@
+.main-container {
+  padding: 90px 10px 20px;
+}
+
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
 }
 
 .pagination-item {
@@ -68,5 +71,4 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px 10px;
 }

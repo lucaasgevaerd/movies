@@ -1,6 +1,5 @@
-import { Action } from "@remix-run/router";
-
 export type Movies = {
+  price: number;
   adult: boolean;
   backdrop_path: string;
   genre_ids: [];
@@ -24,6 +23,7 @@ export type Movie = {
   overview: string;
   vote_average: number;
   genre_ids: [];
+  price: number;
   release_date: string;
 }
 
