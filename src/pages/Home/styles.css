@@ -2,6 +2,13 @@
   padding: 90px 10px 20px;
 }
 
+.movies-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -67,83 +74,56 @@
   cursor: default;
 }
 
-.movies-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
 @media (min-width: 576px) {
   .main-container {
-    padding: 90px 20px 30px;
-  }
-
-  .movies-container {
-    margin-bottom: 30px;
+    padding: 90px 20px 0;
   }
 
   .movies-container {
     display: grid;
     justify-items: center;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 20px 20px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ". ."
-      ". ."
-      ". ."
-      ". ."
-      ". ."
-      ". ."
-      ". ."
-      ". ."
-      ". ."
-      ". .";
   }
 }
 
 @media (min-width: 768px) {
   .main-container {
-    padding: 100px 20px 30px;
+    padding: 100px 20px 10px;
+  }
+
+  .movies-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px 20px;
   }
 }
 
 @media (min-width: 992px) {
+  .main-container {
+    padding: 100px 30px 10px;
+  }
+
   .movies-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 20px 20px;
-    grid-auto-flow: row;
-    align-items: start;
-    grid-template-areas:
-      ". . . ."
-      ". . . ."
-      ". . . ."
-      ". . . ."
-      ". . . .";
   }
 }
 
 @media (min-width: 1200px) {
   .main-container {
-    padding: 100px 30px 20px;
+    padding: 110px 30px 20px;
+    margin: 0 auto;
+    max-width: 1700px;
   }
 
   .movies-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 20px 20px;
-    grid-auto-flow: row;
-    align-items: start;
-    grid-template-areas:
-      ". . . ."
-      ". . . ."
-      ". . . ."
-      ". . . ."
-      ". . . .";
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px 30px;
   }
 }
