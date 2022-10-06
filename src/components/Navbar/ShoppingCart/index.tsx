@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { globalStates } from '../../../App';
 import ShoppingCartItem from './ShoppingCartItem';
@@ -6,9 +6,10 @@ import './styles.css';
 
 type Props = {
   clsName: string;
+  rentIsActived: Function;
 }
 
-function ShoppingCart({ clsName }: Props) {
+function ShoppingCart({ clsName, rentIsActived }: Props) {
 
   const { shoppingCartState } = useContext(globalStates);
 
@@ -17,6 +18,10 @@ function ShoppingCart({ clsName }: Props) {
       return accumulator + object.price;
     }, 0);
     return sum.toFixed(2)
+  }
+
+  const handleShoppingCart = () => {
+    rentIsActived()
   }
 
   return (
@@ -33,7 +38,7 @@ function ShoppingCart({ clsName }: Props) {
           <div className='total-value-and-total-movies-container'>
             <p className='shopping-cart-items-total-movies'>Total movies: <span className='shopping-cart-items-quantity'>{shoppingCartState.length}</span></p>
             <p className='shopping-cart-items-total-value'>Total value: <span className='shopping-cart-items-price'>${handleTotalValue()}</span></p>
-            <Link to={'/checkout'} className='shopping-cart-rent-link'>Rent</Link>
+            <Link to={'/checkout'} className='shopping-cart-rent-link' onClick={handleShoppingCart}>Rent</Link>
           </div>
         </>
       )}

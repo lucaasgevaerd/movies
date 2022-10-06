@@ -29,6 +29,10 @@ function Navbar() {
     const data = await response.json()
   }
 
+  const handleShoppingCart = () => {
+    showShoppingCart()
+  }
+
   return (
     <>
       <header>
@@ -49,7 +53,7 @@ function Navbar() {
                 <div className='item-quantity-indicator' onClick={showShoppingCart}>{shoppingCartState.length}</div>
               )}
               <FaShoppingCart onClick={showShoppingCart} />
-              <ShoppingCart clsName={shoppingCart ? 'shopping-cart active' : 'shopping-cart'} />
+              <ShoppingCart rentIsActived={handleShoppingCart} clsName={shoppingCart ? 'shopping-cart active' : 'shopping-cart'} />
             </div>
           </div>
         </nav>
