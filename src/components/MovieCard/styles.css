@@ -66,6 +66,7 @@
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.75);
   justify-content: center;
+  text-align: justify;
   position: absolute;
   height: 100%;
   top: 100%;
@@ -104,7 +105,7 @@
 
 .movie-card-value:first-of-type {
   position: absolute;
-  bottom: 7px;
+  bottom: 20px;
   left: 15px;
   font-size: 20px;
   color: #aaa;
@@ -118,9 +119,15 @@
 
 .tap-to-learn-more {
   position: absolute;
-  bottom: 10px;
-  right: 15px;
+  bottom: 5px;
+  right: 10px;
   color: #aaa;
+}
+
+@media (min-width: 576px) {
+  .movie-card-container {
+    margin: 0;
+  }
 }
 
 @media (min-width: 768px) {

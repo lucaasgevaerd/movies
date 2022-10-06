@@ -11,7 +11,7 @@
   right: -100%;
   transition: 0.4s;
   z-index: 0;
-  padding: 20px 20px 100px;
+  padding: 40px 20px 120px;
 }
 
 .shopping-cart.active {
@@ -26,6 +26,29 @@
   padding: 10px;
 }
 
+.total-value-and-total-movies-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shopping-cart-items-total-movies {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 18px;
+}
+
+.shopping-cart-items-quantity {
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff0;
+  margin-left: 10px;
+}
+
 .shopping-cart-items-total-value {
   display: flex;
   justify-content: space-between;
@@ -38,4 +61,32 @@
   font-weight: bold;
   font-size: 26px;
   color: #ff0;
+  padding: 6px 10px;
+  border: 1px solid #ff0;
+}
+
+.shopping-cart-rent-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #dedede;
+  color: var(--font-secondary-color);
+  height: 40px;
+  border: none;
+  font-size: 22px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.shopping-cart-rent-link:hover {
+  background-color: #fff;
+}
+
+.empty-shopping-cart {
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+  font-size: 24px;
+  height: 100%;
 }

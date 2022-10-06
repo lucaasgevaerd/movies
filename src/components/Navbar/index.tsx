@@ -46,7 +46,7 @@ function Navbar() {
             </div>
             <div className='navbar-menu-shopping-cart' >
               {shoppingCartState.length > 0 && (
-                <div className='item-quantity-indicator'>{shoppingCartState.length}</div>
+                <div className='item-quantity-indicator' onClick={showShoppingCart}>{shoppingCartState.length}</div>
               )}
               <FaShoppingCart onClick={showShoppingCart} />
               <ShoppingCart clsName={shoppingCart ? 'shopping-cart active' : 'shopping-cart'} />

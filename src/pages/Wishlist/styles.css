@@ -1,0 +1,13 @@
+.wishlist-main-container {
+  display: flex;
+  min-height: calc(100vh - 70px);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 90px 10px 20px;
+}
+
+.empty-wishlist-message {
+  font-weight: bold;
+  font-size: 30px;
+}

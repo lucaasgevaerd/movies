@@ -17,6 +17,7 @@ function ShoppingCartItem({ image, title, price, id }: Props) {
   const handleMovieRemove = () => {
     const shoppingCartStateUpdated = shoppingCartState.filter((i: any) => i.id !== id);
     setShoppingCartState(shoppingCartStateUpdated)
+    localStorage.setItem('shoppingCartState', JSON.stringify(shoppingCartStateUpdated));
   }
 
 

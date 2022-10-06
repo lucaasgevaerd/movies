@@ -12,8 +12,22 @@ export const globalStates = createContext({
 
 function App() {
 
-  const [shoppingCartState, setShoppingCartState] = useState<any[]>([]);
-  const [wishlistState, setWishlistState] = useState<any[]>([]);
+  const [shoppingCartState, setShoppingCartState] = useState<any[]>(() => {
+    if (localStorage.getItem('shoppingCartState')) {
+      return JSON.parse(localStorage.getItem('shoppingCartState')!);
+    } else {
+      return [];
+    }
+  })
+
+
+  const [wishlistState, setWishlistState] = useState<any[]>(() => {
+    if (localStorage.getItem('wishlistState')) {
+      return JSON.parse(localStorage.getItem('wishlistState')!);
+    } else {
+      return [];
+    }
+  })
 
   return (
     <>

@@ -43,8 +43,10 @@ function MovieCard({ image, title, description, release, genres, price, id }: Pr
     if (shoppingCartState.find((i: any) => i.id === id)) {  // REMOÇÃO DE FILME DO CARRINHO DE COMPRAS
       const shoppigCartRemove = shoppingCartState.filter((i: any) => i.id !== id)
       setShoppingCartState(shoppigCartRemove)
+      localStorage.setItem('shoppingCartState', JSON.stringify(shoppigCartRemove));
     } else {  //ADICIONAR FILME NO CARRINHO DE COMPRAS
       setShoppingCartState([{ image: address_image + image, title, description, release, genres, price, id, shoppingCart: true }, ...shoppingCartState])
+      localStorage.setItem('shoppingCartState', JSON.stringify([{ image: address_image + image, title, description, release, genres, price, id, shoppingCart: true }, ...shoppingCartState]));
     }
   }
 
@@ -52,8 +54,10 @@ function MovieCard({ image, title, description, release, genres, price, id }: Pr
     if (wishlistState.find((i: any) => i.id === id)) {  // REMOÇÃO DE FILME DA LISTA DE DESEJOS
       const wishlistRemove = wishlistState.filter((i: any) => i.id !== id)
       setWishlistState(wishlistRemove)
+      localStorage.setItem('wishlistState', JSON.stringify(wishlistRemove));
     } else {  //ADICIONAR FILME NA LISTA DE DESEJOS
       setWishlistState([{ image: address_image + image, title, description, release, genres, price, id, wishlist: true }, ...wishlistState])
+      localStorage.setItem('wishlistState', JSON.stringify([{ image: address_image + image, title, description, release, genres, price, id, wishlist: true }, ...wishlistState]));
     }
   }
 
