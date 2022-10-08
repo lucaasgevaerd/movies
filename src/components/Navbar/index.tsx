@@ -37,7 +37,7 @@ function Navbar() {
     <>
       <header>
         <nav className='navbar-container'>
-          <h1 className="navbar-brand"><Link to={'/'}>Movies</Link></h1>
+          <h1 className="navbar-brand" onClick={() => { shoppingCart === true && setShoppingCart(false) }}><Link to={'/'}>Movies</Link></h1>
           <input id='text' name='text' className='navbar-search' type="text" placeholder='Pesquisar' onChange={handleChange} value={text} />
           <div className="navbar-menu">
             <div className='navbar-menu-wishlist'>

@@ -30,13 +30,15 @@ function ShoppingCart({ clsName, rentIsActived }: Props) {
         <p className='empty-shopping-cart'>Empty shopping cart</p>
       ) : (
         <>
-          <div className='shopping-cart-items-container'>
-            {shoppingCartState.map((movie: any) => (
-              <ShoppingCartItem image={movie.image} title={movie.title} price={movie.price} id={movie.id} key={movie.id} />
-            ))}
-          </div>
-          <div className='total-value-and-total-movies-container'>
+          <div className='shopping-cart-items-and-total-movies-container'>
+            <div className='shopping-cart-items-container'>
+              {shoppingCartState.map((movie: any) => (
+                <ShoppingCartItem image={movie.image} title={movie.title} price={movie.price} id={movie.id} key={movie.id} />
+              ))}
+            </div>
             <p className='shopping-cart-items-total-movies'>Total movies: <span className='shopping-cart-items-quantity'>{shoppingCartState.length}</span></p>
+          </div>
+          <div className='total-value-movies-container'>
             <p className='shopping-cart-items-total-value'>Total value: <span className='shopping-cart-items-price'>${handleTotalValue()}</span></p>
             <Link to={'/checkout'} className='shopping-cart-rent-link' onClick={handleShoppingCart}>Rent</Link>
           </div>

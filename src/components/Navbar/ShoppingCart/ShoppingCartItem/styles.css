@@ -4,6 +4,13 @@
   width: 100%;
   margin-bottom: 10px;
   font-size: 16px;
+  border-top: 1px solid #fff;
+  padding-top: 10px;
+}
+
+.shopping-cart-item-container:first-of-type {
+  border-top: none;
+  padding-top: none;
 }
 
 .shopping-cart-item-image {
@@ -12,7 +19,7 @@
 
 .shopping-cart-item-title {
   height: 60px;
-  width: 140px;
+  width: 180px;
   display: flex;
   align-items: center;
   margin: 0 10px 0 20px;
@@ -20,8 +27,11 @@
 
 .shopping-cart-item-price {
   margin-right: 20px;
+  width: 80px;
 }
 
 .shopping-cart-item-trash {
   cursor: pointer;
+  min-width: 20px;
+  width: 20px;
 }
