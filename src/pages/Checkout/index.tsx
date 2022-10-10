@@ -5,10 +5,8 @@ import 'jquery-mask-plugin/dist/jquery.mask';
 import 'jquery-validation';
 import { useContext, useEffect, useState } from "react";
 import { globalStates } from "../../App";
-import ShoppingCartItem from "../../components/Navbar/ShoppingCart/ShoppingCartItem";
-import { FaTrash } from "react-icons/fa";
 import CheckoutShoppingCartItem from "./CheckoutShoppingCartItem";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Checkout() {
   const { register, handleSubmit, formState: { errors }, control } = useForm();
@@ -64,11 +62,11 @@ function Checkout() {
       messages: {
         firstname: {
           required: 'Please enter your First name',
-          minlength: 'Your First name must contain 3 characters'
+          minlength: 'Your First name must contain 2 characters'
         },
         lastname: {
           required: 'Please enter your Last name',
-          minlength: 'Your Last name must contain 3 characters'
+          minlength: 'Your Last name must contain 2 characters'
         },
         cpf: {
           required: 'Please enter your CPF',
@@ -90,6 +88,23 @@ function Checkout() {
       }
     })
   })
+
+  const handleSubmitValues = () => {
+    $(document)
+      .on('click', 'form button[type=submit]', function (e) {
+        var isValid = $(e.target).parents('form').valid();
+        if (!isValid) {
+          e.preventDefault(); //prevent the default action
+        } else {
+          const modalContainer = document.querySelector<HTMLElement>('.modal-container')!;
+          modalContainer.style.opacity = "1";
+          modalContainer.style.visibility = 'visible';
+          const blurBackground = document.querySelector<HTMLDivElement>('.forgot-password-card-container')!;
+          blurBackground.classList.add('blur-background')
+        }
+      });
+
+  }
 
   const [cep, setCep] = useState({
     bairro: "",
@@ -126,6 +141,12 @@ function Checkout() {
     return sum.toFixed(2)
   }
 
+  const handleShoppingCartCleaning = () => {
+    const shoppingCartStateUpdated: [] = []
+    setShoppingCartState(shoppingCartStateUpdated)
+    localStorage.setItem('shoppingCartState', JSON.stringify(shoppingCartStateUpdated));
+  }
+
   return (
     <>
       <main className="checkout-main-container">
@@ -155,9 +176,16 @@ function Checkout() {
             <input type="text" name="city" value={cep.localidade} className="checkout-form-inputs inputs-disabled" placeholder="City" disabled />
             <input type="text" name="uf" value={cep.uf} className="checkout-form-inputs inputs-disabled" placeholder="UF" disabled />
             <input type="text" id="number" name="number" placeholder="Number" className="checkout-form-inputs" />
-            <button type="submit" className="go-to-payment-button">Go to payment</button>
+            <button type="submit" className="go-to-payment-button" onClick={handleSubmitValues}>Go to payment</button>
           </form>
         </section>
+        <div className="modal-container">
+          <div className="modal-card">
+            <p className="modal-thanks">Order placed successfully!</p>
+            <p className="modal-description">Here it could be redirected to choose the payment method, as in this case it is a prototype, we will return to the Home page.</p>
+            <Link to='/' className='modal-link-button' onClick={handleShoppingCartCleaning}>Ir para home</Link>
+          </div>
+        </div>
       </main>
     </>
   );

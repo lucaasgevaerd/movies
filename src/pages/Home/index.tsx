@@ -4,6 +4,7 @@ import ReactPaginate from 'react-paginate';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Movies } from '../../types/movies';
 import MovieCard from '../../components/MovieCard';
+import Loader from '../../components/Loader';
 
 function Home() {
 
@@ -25,15 +26,22 @@ function Home() {
     getMovies(value + 1)
   }
 
-
   return (
     <>
       <main className='main-container'>
-        <section className='movies-container'>
-          {movies.map(movie => (
-            <MovieCard image={movie.poster_path} title={movie.title} description={movie.overview} release={movie.release_date} genres={movie.genre_ids} price={movie.price} id={movie.id} key={movie.id} />
-          ))}
-        </section>
+        {movies.length !== 0 ? (
+          <>
+            <section className='movies-container'>
+              {movies.map(movie => (
+                <MovieCard image={movie.poster_path} title={movie.title} description={movie.overview} release={movie.release_date} genres={movie.genre_ids} price={movie.price} id={movie.id} key={movie.id} vote_average={movie.vote_average} />
+              ))}
+            </section>
+          </>
+        ) : (
+          <div className="home-loader-container">
+            <Loader />
+          </div>
+        )}
         <ReactPaginate
           forcePage={0}
           pageCount={500}

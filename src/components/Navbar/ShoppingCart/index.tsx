@@ -11,7 +11,7 @@ type Props = {
 
 function ShoppingCart({ clsName, rentIsActived }: Props) {
 
-  const { shoppingCartState } = useContext(globalStates);
+  const { shoppingCartState, setShoppingCartState } = useContext(globalStates);
 
   const handleTotalValue = () => {
     const sum = shoppingCartState.reduce((accumulator: any, object: any) => {
@@ -24,6 +24,13 @@ function ShoppingCart({ clsName, rentIsActived }: Props) {
     rentIsActived()
   }
 
+  const handleShoppingCartCleaning = () => {
+    const shoppingCartStateUpdated: [] = []
+    setShoppingCartState(shoppingCartStateUpdated)
+    localStorage.setItem('shoppingCartState', JSON.stringify(shoppingCartStateUpdated));
+    rentIsActived()
+  }
+
   return (
     <div className={clsName}>
       {shoppingCartState.length === 0 ? (
@@ -31,6 +38,7 @@ function ShoppingCart({ clsName, rentIsActived }: Props) {
       ) : (
         <>
           <div className='shopping-cart-items-and-total-movies-container'>
+            <p className='shopping-remove-all-movies' onClick={handleShoppingCartCleaning}>Remove all movies</p>
             <div className='shopping-cart-items-container'>
               {shoppingCartState.map((movie: any) => (
                 <ShoppingCartItem image={movie.image} title={movie.title} price={movie.price} id={movie.id} key={movie.id} />

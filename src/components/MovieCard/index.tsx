@@ -3,18 +3,21 @@ import { genreList } from '../../types/movies';
 import { FaHeart, FaShoppingCart, FaRegWindowClose, FaWindowClose } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { globalStates } from '../../App';
+import { formatDate } from '../../util/formatDate';
+import Loader from '../Loader';
 
 type Props = {
   image: string;
   title: string;
   description: string;
   release: string;
+  vote_average: number;
   genres: [];
   price: number;
-  id: number
+  id: number;
 }
 
-function MovieCard({ image, title, description, release, genres, price, id }: Props) {
+function MovieCard({ image, title, description, release, vote_average, genres, price, id }: Props) {
 
   const { wishlistState, setWishlistState, shoppingCartState, setShoppingCartState } = useContext(globalStates);
 
@@ -28,13 +31,7 @@ function MovieCard({ image, title, description, release, genres, price, id }: Pr
     return (<p className='movie-card-genres' key={value}>{genreList.find(y => value === y.id && y)?.name}</p>)
   }
 
-
-
-
-
-
-
-
+  const [loaded, setLoaded] = useState(false);
 
   const [shoppingCartColor, setShoppingCartColor] = useState<string>();
   const [wishlistColor, setWishlistColor] = useState<string>();
@@ -81,7 +78,6 @@ function MovieCard({ image, title, description, release, genres, price, id }: Pr
     }
   }, [id, wishlistState])
 
-
   return (
     <>
       <div className="movie-card-container" key={id}>
@@ -93,22 +89,45 @@ function MovieCard({ image, title, description, release, genres, price, id }: Pr
           <FaShoppingCart onClick={handleShoppingCart} color={shoppingCartColor} />
           <p className='movie-card-shopping-cart-description'>Add or remove from shopping cart?</p>
         </div>
-        <img src={`${address_image}${image}`} alt={title} referrerPolicy={'no-referrer'} className="movie-card-image" onClick={showOverview} />
-        <p className='movie-card-value'>Rent for: <span className='movie-card-value-price'>${price.toFixed(2)}</span></p>
-        <div className={overview ? 'overview active' : 'overview'}>
-          <FaRegWindowClose className='movie-card-window-close-button' onClick={showOverview} />
-          <div className='movie-card-content'>
-            <div className='movie-card-genres-and-title'>
-              <p>Genres:</p>
-              <div className='movie-card-genres-container'>
-                {genres?.map(x => GenreConvert(x))}
+        {loaded ? null : (
+          <div className="loading-movie-card-container">
+            <img
+              src={require("../../assets/images/default-image.png")}
+              alt="carregando imagem"
+              className="loading-movie-card-image"
+            />
+            <div className="loading-movie-card-loader">
+              <Loader />
+            </div>
+          </div>
+        )}
+        <img style={loaded ? {} : { display: "none" }}
+          src={`${address_image}${image}`}
+          onLoad={() => setLoaded(true)}
+          alt={title} referrerPolicy={'no-referrer'}
+          className="movie-card-image" onClick={showOverview}
+        />
+        {loaded && (
+          <>
+            <p className='movie-card-value'>Rent for: <span className='movie-card-value-price'>${price.toFixed(2)}</span></p>
+            <div className={overview ? 'overview active' : 'overview'}>
+              <p className='movie-card-vote-average'>{vote_average}</p>
+              <FaRegWindowClose className='movie-card-window-close-button' onClick={showOverview} />
+              <div className='movie-card-content'>
+                <div className='movie-card-genres-and-title'>
+                  <p>Genres:</p>
+                  <div className='movie-card-genres-container'>
+                    {genres?.map(x => GenreConvert(x))}
+                  </div>
+                </div>
+                <p className='movie-card-release'>Release: {formatDate(release)}</p>
+                <p className='movie-card-overview'>Overview</p>
+                <p className='movie-card-description'>{description}</p>
               </div>
             </div>
-            <p className='movie-card-overview'>Overview</p>
-            <p className='movie-card-description'>{description}</p>
-          </div>
-        </div>
-        <p className='tap-to-learn-more'>Tap to learn more</p>
+            <p className='tap-to-learn-more'>Tap to learn more</p>
+          </>
+        )}
       </div>
     </>
   )

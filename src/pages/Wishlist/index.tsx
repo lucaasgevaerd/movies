@@ -6,7 +6,7 @@ import './styles.css';
 
 function Wishlist() {
 
-  const { wishlistState, setWishlistState } = useContext(globalStates)
+  const { wishlistState } = useContext(globalStates)
   const [counter, setCounter] = useState(3);
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function Wishlist() {
           ) : (
             <section className='wishlist-movies-container'>
               {wishlistState.map((movie: any) => (
-                <MovieCard image={movie.image} title={movie.title} description={movie.description} release={movie.release} genres={movie.genres} price={movie.price} id={movie.id} key={movie.id} />
+                <MovieCard image={movie.image} title={movie.title} description={movie.description} release={movie.release} vote_average={movie.vote_average} genres={movie.genres} price={movie.price} id={movie.id} key={movie.id} />
               ))}
             </section>
           )

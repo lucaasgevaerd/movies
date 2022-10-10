@@ -74,6 +74,14 @@
   cursor: default;
 }
 
+.home-loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+}
+
 @media (min-width: 576px) {
   .main-container {
     padding: 90px 20px 0;
@@ -108,7 +116,7 @@
   .movies-container {
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px 20px;
   }
 }

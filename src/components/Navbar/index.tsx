@@ -37,23 +37,25 @@ function Navbar() {
     <>
       <header>
         <nav className='navbar-container'>
-          <h1 className="navbar-brand" onClick={() => { shoppingCart === true && setShoppingCart(false) }}><Link to={'/'}>Movies</Link></h1>
-          <input id='text' name='text' className='navbar-search' type="text" placeholder='Pesquisar' onChange={handleChange} value={text} />
-          <div className="navbar-menu">
-            <div className='navbar-menu-wishlist'>
-              {wishlistState.length > 0 && (
-                <div className='item-quantity-indicator'>{wishlistState.length}</div>
-              )}
-              <Link to={'/wishlist'} >
-                <FaHeart />
-              </Link>
-            </div>
-            <div className='navbar-menu-shopping-cart' >
-              {shoppingCartState.length > 0 && (
-                <div className='item-quantity-indicator' onClick={showShoppingCart}>{shoppingCartState.length}</div>
-              )}
-              <FaShoppingCart onClick={showShoppingCart} />
-              <ShoppingCart rentIsActived={handleShoppingCart} clsName={shoppingCart ? 'shopping-cart active' : 'shopping-cart'} />
+          <div className='navbar-content'>
+            <h1 className="navbar-brand" onClick={() => { shoppingCart === true && setShoppingCart(false) }}><Link to={'/'}>Movies</Link></h1>
+            <input id='text' name='text' className='navbar-search' type="text" placeholder='Pesquisar' onChange={handleChange} value={text} />
+            <div className="navbar-menu">
+              <div className='navbar-menu-wishlist'>
+                {wishlistState.length > 0 && (
+                  <div className='item-quantity-indicator'>{wishlistState.length}</div>
+                )}
+                <Link to={'/wishlist'} >
+                  <FaHeart onClick={() => shoppingCart === true && setShoppingCart(false)} />
+                </Link>
+              </div>
+              <div className='navbar-menu-shopping-cart' >
+                {shoppingCartState.length > 0 && (
+                  <div className='item-quantity-indicator' onClick={showShoppingCart}>{shoppingCartState.length}</div>
+                )}
+                <FaShoppingCart onClick={showShoppingCart} />
+                <ShoppingCart rentIsActived={handleShoppingCart} clsName={shoppingCart ? 'shopping-cart active' : 'shopping-cart'} />
+              </div>
             </div>
           </div>
         </nav>
